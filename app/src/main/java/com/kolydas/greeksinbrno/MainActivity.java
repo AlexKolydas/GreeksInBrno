@@ -12,6 +12,8 @@ import com.kolydas.greeksinbrno.specialities.Courses;
 import com.kolydas.greeksinbrno.specialities.Doctors;
 import com.kolydas.greeksinbrno.specialities.Food;
 
+//Tutorial : https://www.youtube.com/watch?v=jpaHMcQDaDg
+
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener{
 
