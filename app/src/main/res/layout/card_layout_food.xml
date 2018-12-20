@@ -41,9 +41,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="Name"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
-            android:textStyle="italic"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -82,15 +81,52 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:autoLink="email"
+            android:text="Email"
             android:textColor="@color/colorOrange"
-
             android:textSize="24sp"
             android:textStyle="bold"
-            android:text="Email"
             card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.24"
             card_view:layout_constraintStart_toEndOf="@+id/webTextView"
             card_view:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Περιγραφη"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            card_view:layout_constraintBottom_toTopOf="@+id/view"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/nameText"
+            card_view:layout_constraintVertical_bias="0.26999998" />
+
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Phone"
+            android:textColor="@color/colorOrange"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.89"
+            card_view:layout_constraintStart_toEndOf="@+id/emailTextView"
+            card_view:layout_constraintTop_toTopOf="@+id/emailTextView" />
 
 
     </android.support.constraint.ConstraintLayout>

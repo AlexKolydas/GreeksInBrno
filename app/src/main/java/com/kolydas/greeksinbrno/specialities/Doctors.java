@@ -13,12 +13,18 @@ import android.view.ViewGroup;
 
 import com.kolydas.greeksinbrno.Adapters.FoodAdapter;
 import com.kolydas.greeksinbrno.Data.MyData;
-import com.kolydas.greeksinbrno.Models.FoodModel;
+import com.kolydas.greeksinbrno.Models.Model;
 import com.kolydas.greeksinbrno.R;
 
 import java.util.ArrayList;
 
 public class Doctors extends Fragment {
+
+    private static RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private static RecyclerView recyclerView;
+    private static ArrayList<Model> data;
+
 
     @Nullable
     @Override
@@ -27,19 +33,22 @@ public class Doctors extends Fragment {
         View view=inflater.inflate(R.layout.fragment_doctors,null);
 
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_food);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewDoctors);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        data = new ArrayList<FoodModel>();
+        data = new ArrayList<Model>();
         for (int i = 0; i < MyData.titleArray.length; i++) {
-            data.add(new FoodModel(
-                    MyData.nameArray[i],
-                    MyData.titleArray[i],
-                    MyData.webArray[i]
+            data.add(new Model(
+                    MyData.doctornameArray[i],
+                    MyData.doctortitleArray[i],
+                    MyData.doctorwebArray[i],
+                    MyData.doctorEmailArray[i],
+                    MyData.doctorphoneArray[i],
+                    MyData.doctorDescArray[i]
             ));
         }
 

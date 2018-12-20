@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.kolydas.greeksinbrno.Adapters.FoodAdapter;
 import com.kolydas.greeksinbrno.Data.MyData;
-import com.kolydas.greeksinbrno.Models.FoodModel;
+import com.kolydas.greeksinbrno.Models.Model;
 import com.kolydas.greeksinbrno.R;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class Food extends Fragment {
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private static RecyclerView recyclerView;
-    private static ArrayList<FoodModel> data;
+    private static ArrayList<Model> data;
 
 
     @Nullable
@@ -45,12 +45,15 @@ public class Food extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        data = new ArrayList<FoodModel>();
+        data = new ArrayList<Model>();
         for (int i = 0; i < MyData.titleArray.length; i++) {
-            data.add(new FoodModel(
+            data.add(new Model(
                     MyData.nameArray[i],
                     MyData.titleArray[i],
-                    MyData.webArray[i]
+                    MyData.webArray[i],
+                    MyData.emailArray[i],
+                    MyData.phoneArray[i],
+                    MyData.descArray[i]
             ));
         }
 

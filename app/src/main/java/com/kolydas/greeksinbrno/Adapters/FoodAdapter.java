@@ -1,8 +1,14 @@
 package com.kolydas.greeksinbrno.Adapters;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,32 +17,42 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.kolydas.greeksinbrno.Models.FoodModel;
+import com.kolydas.greeksinbrno.Models.Model;
 import com.kolydas.greeksinbrno.R;
+
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> {
 
+    public Context context;
     //ArrayList that gets all the model stuff
-    private ArrayList<FoodModel> dataSet;
+    private ArrayList<Model> dataSet;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewName;
         TextView textViewTitle;
         TextView textViewWeb;
+        TextView textViewEmail;
+        TextView textViewPhone;
+        TextView textViewDesc;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             this.textViewName = (TextView) itemView.findViewById(R.id.nameText);
             this.textViewTitle = (TextView) itemView.findViewById(R.id.titleText);
-            this.textViewWeb=(TextView) itemView.findViewById(R.id.webTextView);
+            this.textViewWeb = (TextView) itemView.findViewById(R.id.webTextView);
+            this.textViewEmail = (TextView) itemView.findViewById(R.id.emailTextView);
+            this.textViewPhone = (TextView) itemView.findViewById(R.id.phoneTextView);
+            this.textViewDesc = (TextView) itemView.findViewById(R.id.descriptionTextView);
         }
     }
 
     //gets from Model FoodModel
-    public FoodAdapter(ArrayList<FoodModel> data) {
+    public FoodAdapter(ArrayList<Model> data) {
         this.dataSet = data;
     }
 
@@ -56,16 +72,61 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
 
         TextView textViewName = holder.textViewName;
         TextView textViewTitle = holder.textViewTitle;
-        TextView textViewWeb=holder.textViewWeb;
+        TextView textViewWeb = holder.textViewWeb;
+        TextView textViewEmail = holder.textViewEmail;
+        TextView textViewPhone = holder.textViewPhone;
+        TextView textViewDesc = holder.textViewDesc;
 
         textViewName.setText(dataSet.get(listPosition).getName());
         textViewTitle.setText(dataSet.get(listPosition).getTitle());
+        textViewDesc.setText(dataSet.get(listPosition).getDesc());
 
+        //Website
         textViewWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent openLink = new Intent(Intent.ACTION_VIEW,Uri.parse(dataSet.get(listPosition).getWeb()));
-                v.getContext().startActivity(openLink);
+                if (!dataSet.get(listPosition).getWeb().equals("")) { //If URL is not empty then go to url
+                    Intent openLink = new Intent(Intent.ACTION_VIEW, Uri.parse(dataSet.get(listPosition).getWeb()));
+                    v.getContext().startActivity(openLink);
+                }
+            }
+        });
+
+        //Email
+        textViewEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!dataSet.get(listPosition).getEmail().equals("")) { //If email is not empty then send email
+                    Intent sendIntent = new Intent(Intent.ACTION_SEND);
+                    sendIntent.putExtra(Intent.EXTRA_EMAIL, dataSet.get(listPosition).getEmail());
+                    sendIntent.setType("text/html");
+                    v.getContext().startActivity(sendIntent);
+                }
+            }
+        });
+
+        //Phone
+        textViewPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!dataSet.get(listPosition).getEmail().equals("")) { //If phone is not empty then call
+
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:" + dataSet.get(listPosition).getPhone()));
+                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    v.getContext().startActivity(callIntent);
+
+
+                }
             }
         });
     }
