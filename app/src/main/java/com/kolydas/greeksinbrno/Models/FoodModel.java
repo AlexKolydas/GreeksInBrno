@@ -2,27 +2,26 @@ package com.kolydas.greeksinbrno.Models;
 
 public class FoodModel {
 
-    String name;
-    String version;
-    int id_;
+    private String name;
+    private String title;
+    private String web;
 
-    public FoodModel(String name, String version, int id_) {
+    public FoodModel(String name, String title, String web) {
         this.name = name;
-        this.version = version;
-        this.id_ = id_;
+        this.title = title;
+        this.web = web;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getVersion() {
-        return version;
+    public String getTitle() {
+        return title;
     }
 
-
-    public int getId() {
-        return id_;
+    public String getWeb() {
+        return web;
     }
 
 }
