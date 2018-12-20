@@ -1,5 +1,6 @@
 package com.kolydas.greeksinbrno.specialities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,7 +26,6 @@ public class Doctors extends Fragment {
     private static RecyclerView recyclerView;
     private static ArrayList<Model> data;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,13 +41,13 @@ public class Doctors extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         data = new ArrayList<Model>();
-        for (int i = 0; i < MyData.titleArray.length; i++) {
+        for (int i = 0; i < MyData.doctortitleArray.length; i++) {
             data.add(new Model(
                     MyData.doctornameArray[i],
                     MyData.doctortitleArray[i],
                     MyData.doctorwebArray[i],
                     MyData.doctorEmailArray[i],
-                    MyData.doctorphoneArray[i],
+//                    MyData.doctorphoneArray[i],
                     MyData.doctorDescArray[i]
             ));
         }

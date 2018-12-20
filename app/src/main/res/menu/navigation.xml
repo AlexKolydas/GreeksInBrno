@@ -3,18 +3,24 @@
 
     <item
         android:id="@+id/navigation_food"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_local_dining_black_24dp"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_doctors"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:icon="@drawable/ic_local_hospital_black_24dp"
+        android:title="@string/health" />
 
     <item
         android:id="@+id/navigation_courses"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:icon="@drawable/ic_library_books_black_24dp"
+        android:title="@string/courses"/>
+
+    <item
+        android:id="@+id/navigation_rest"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="@string/rest"/>
+
 
 
 </menu>
