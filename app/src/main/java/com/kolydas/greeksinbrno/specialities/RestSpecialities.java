@@ -29,7 +29,7 @@ public class RestSpecialities extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_courses, null);
+        View view = inflater.inflate(R.layout.fragment_rest, null);
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_rest);
@@ -40,13 +40,13 @@ public class RestSpecialities extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         data = new ArrayList<Model>();
-        for (int i = 0; i < MyData.coursetitleArray.length; i++) {
+        for (int i = 0; i < MyData.resttitleArray.length; i++) {
             data.add(new Model(
-                    MyData.coursenameArray[i],
-                    MyData.coursetitleArray[i],
-                    MyData.coursewebArray[i],
-                    MyData.courseEmailArray[i],
-                    MyData.courseDescArray[i]
+                    MyData.restnameArray[i],
+                    MyData.resttitleArray[i],
+                    MyData.restwebArray[i],
+                    MyData.restEmailArray[i],
+                    MyData.restDescArray[i]
             ));
         }
 

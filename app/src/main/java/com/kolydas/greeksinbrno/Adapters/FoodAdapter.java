@@ -10,6 +10,7 @@ import android.net.Uri;
 
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,6 @@ import android.widget.TextView;
 
 import com.kolydas.greeksinbrno.Models.Model;
 import com.kolydas.greeksinbrno.R;
-
 
 
 import java.util.ArrayList;
@@ -68,12 +68,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
         TextView textViewName = holder.textViewName;
         TextView textViewTitle = holder.textViewTitle;
         TextView textViewWeb = holder.textViewWeb;
-        TextView textViewEmail = holder.textViewEmail;
+        final TextView textViewEmail = holder.textViewEmail;
         TextView textViewDesc = holder.textViewDesc;
 
         textViewName.setText(dataSet.get(listPosition).getName());
         textViewTitle.setText(dataSet.get(listPosition).getTitle());
         textViewDesc.setText(dataSet.get(listPosition).getDesc());
+
+        final String email = dataSet.get(listPosition).getEmail();
+
 
         //Website
         textViewWeb.setOnClickListener(new View.OnClickListener() {
@@ -91,15 +94,16 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
             @Override
             public void onClick(View v) {
                 if (!dataSet.get(listPosition).getEmail().equals("")) { //If email is not empty then send email
-                    Intent sendIntent = new Intent(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_EMAIL, dataSet.get(listPosition).getEmail());
-                    sendIntent.setType("text/html");
+                    Intent sendIntent = new Intent(Intent.ACTION_SENDTO,
+                            Uri.fromParts("mailto", dataSet.get(listPosition).getEmail(), null));
+                    sendIntent.putExtra(Intent.EXTRA_SUBJECT, ""); //Default subject
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "" );// Default text
                     v.getContext().startActivity(sendIntent);
                 }
             }
         });
 
-}
+    }
 
     @Override
     public int getItemCount() {

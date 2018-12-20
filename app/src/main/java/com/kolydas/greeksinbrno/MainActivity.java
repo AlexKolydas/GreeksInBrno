@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.kolydas.greeksinbrno.specialities.Courses;
 import com.kolydas.greeksinbrno.specialities.Doctors;
 import com.kolydas.greeksinbrno.specialities.Food;
+import com.kolydas.greeksinbrno.specialities.RestSpecialities;
 
 //Tutorial : https://www.youtube.com/watch?v=jpaHMcQDaDg
 
@@ -48,6 +49,11 @@ public class MainActivity extends AppCompatActivity
             case R.id.navigation_courses:
                 fragment= new Courses();
                 break;
+
+            case R.id.navigation_rest:
+                fragment= new RestSpecialities();
+                break;
+
 
         }
         return loadFragment(fragment);

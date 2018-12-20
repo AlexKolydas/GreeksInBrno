@@ -40,13 +40,13 @@ public class Courses extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         data = new ArrayList<Model>();
-        for (int i = 0; i < MyData.resttitleArray.length; i++) {
+        for (int i = 0; i < MyData.coursetitleArray.length; i++) {
             data.add(new Model(
-                    MyData.restnameArray[i],
-                    MyData.resttitleArray[i],
-                    MyData.restwebArray[i],
-                    MyData.restEmailArray[i],
-                    MyData.restDescArray[i]
+                    MyData.coursenameArray[i],
+                    MyData.coursetitleArray[i],
+                    MyData.coursewebArray[i],
+                    MyData.courseEmailArray[i],
+                    MyData.courseDescArray[i]
             ));
         }
 
